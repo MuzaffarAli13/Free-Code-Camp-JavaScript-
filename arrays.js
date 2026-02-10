@@ -56,20 +56,59 @@
 
 
 // Nested Array
-var myPlants = [
-    {
-        type:"flower",
-        list:[
-            "sun",
-            "moon",
-        ]
-    },
-    {
-        type:"tree",
-        list:[
-            "sun",
-            "moon",
-        ]
-    },
-];
-console.log(myPlants[0].list[0]);
+// var myPlants = [
+//     {
+//         type:"flower",
+//         list:[
+//             "sun",
+//             "moon",
+//         ]
+//     },
+//     {
+//         type:"tree",
+//         list:[
+//             "sun",
+//             "moon",
+//         ]
+//     },
+// ];
+// console.log(myPlants[0].list[0]);
+
+// Record Collection
+// var collection = {
+//     "2548":{
+//         "album":"Sliperry",
+//         "artist":"Bon Jovi",
+//         "tracks":["Let it roc","You give love"],
+//          },
+//     "2448":{
+//         "album":"1998",
+//         "artist":"prince",
+//         "tracks":["Let it rock","You give love don't "],
+//          },
+//     "1245":{
+//         "artist":"Robot",
+//         "tracks":[],
+//          },
+//     "5439":{
+//       "album":"ABBA Gold"
+//         }
+// }
+
+// var collectionCopy = JSON.parse(JSON.stringify(collection));
+// function updateColloection(id,prop,value){
+//    if(value === ""){
+//     delete collection[id][prop];
+//    }else if(prop === "tracks"){
+//     collection[id][prop] = collection[id][prop] || [];
+//     collection[id][prop].push(value);
+//    }else{
+//     collection[id][prop] = value;
+//    }
+//     return collection;
+// };
+
+// console.log(updateColloection(1245,"tracks",""));
+
+
+// Iterate With While loop
