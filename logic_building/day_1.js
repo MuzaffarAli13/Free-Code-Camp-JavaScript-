@@ -22,24 +22,46 @@ console.log(sum);
 // Problem 2:
 // Largest number nikalo
 const numbers = [5, 12, 8, 20, 3];
-function largest(arr){
-    let num = arr[0];
-    for(let i=0; i < arr.length; i++){
-        if(arr[i] > num){
-            num = arr[i]
+function findLargestN(arr){
+    let largest = arr[0];
+    let indx = arr.indexOf(largest)
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] > largest){
+            largest = arr[i]
         }
     }
-    return num
-}
-
-console.log(largest(numbers));
+   console.log(indx); 
+    return largest
+};
+console.log(findLargestN(numbers));
 
 
 
 // Problem 3:
 // String reverse karo
+// Method 1
 const str = "muzaffar";
-let reversed = str.split("").reverse().join();
+let reversed = str.split("").reverse().join("");
 console.log(reversed);
+
+// Method 2 reversing
+function reversing(str){
+    let result = ""
+    for(let i=str.length-1;i>=0;i--){
+         result += str[i]
+    }
+    return result
+};
+let res = reversing(str)
+console.log(res);
+
+
+// Method 3
+let reverseds = str.split("").reduce((chain,char)=>char+chain);
+console.log(reverseds);
+
+
+
+
 
 
