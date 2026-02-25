@@ -1067,3 +1067,22 @@ let dashes = "----------------------------";
 //     console.log(data);
 // })
 
+let promise = new Promise((resolve,reject)=>{
+    let succuss = true;
+    if(succuss){
+        resolve("Data mil gai..")
+    }else{
+        reject("Failed...")
+    }
+})
+
+promise
+   .then((result)=>{
+    console.log(result);
+   })
+   .catch((error)=>{
+    console.log(error);
+   })
+   .finally(()=>{
+    console.log("hamesha chalta rehta hy...");
+   })
