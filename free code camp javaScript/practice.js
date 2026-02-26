@@ -1067,22 +1067,69 @@ let dashes = "----------------------------";
 //     console.log(data);
 // })
 
-let promise = new Promise((resolve,reject)=>{
-    let succuss = true;
-    if(succuss){
-        resolve("Data mil gai..")
-    }else{
-        reject("Failed...")
-    }
-})
+// let promise = new Promise((resolve,reject)=>{
+//     let succuss = true;
+//     if(succuss){
+//         resolve("Data mil gai..")
+//     }else{
+//         reject("Failed...")
+//     }
+// })
 
-promise
-   .then((result)=>{
-    console.log(result);
-   })
-   .catch((error)=>{
-    console.log(error);
-   })
-   .finally(()=>{
-    console.log("hamesha chalta rehta hy...");
-   })
+// promise
+//    .then(result=>{
+//     console.log(result);
+//    })
+//    .catch(error=>{
+//     console.log(error);
+//    })
+//    .finally(() => {
+//     console.log();
+//    })
+
+// real word Promise
+// function getUser(id){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             if(id === 1){
+//                 resolve({name:"Muzaffar ALi",age:20})
+//             }else{
+//                 reject("user Not Found")
+//             }
+//         },2000)
+//     })
+// };
+
+// getUser(1)
+//     .then(result=>console.log(result))
+//     .catch(error=>console.log(error))
+// getUser(3)
+//     .then(result=>console.log(result))
+//     .catch(error=>console.log(error))
+
+
+// Promise All
+// // Success case:
+// let p1 = new Promise(resolve => setTimeout(() => resolve("User ✅"), 1000));
+// let p2 = new Promise(resolve => setTimeout(() => resolve("Orders ✅"), 2000));
+// let p3 = new Promise(resolve => setTimeout(() => resolve("Notifs ✅"), 1500));
+
+// Promise.all([p1,p2,p3])
+//      .then(result=> console.log(result))
+
+
+// Fail case — Important! ⚠️
+let p1 = new Promise(resolve => resolve("User ✅"));
+let p2 = new Promise((resolve, reject) => reject("Server down! ❌"));
+let p3 = new Promise(resolve => resolve("Notifs ✅"));
+
+Promise.all([p1, p2, p3])
+  .then(results => console.log(results))
+  .catch(error => console.log(error));
+  // "Server down! ❌"
+  // Ek fail → sab fail! 😱
+
+//   Promise.allSettledSab ka result aayega
+Promise.allSettled([p1, p2, p3])
+  .then(results => console.log(results));
+  // Sab ka result aayega — fail ho ya pass!
