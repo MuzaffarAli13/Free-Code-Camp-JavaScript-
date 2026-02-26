@@ -1119,17 +1119,63 @@ let dashes = "----------------------------";
 
 
 // Fail case — Important! ⚠️
-let p1 = new Promise(resolve => resolve("User ✅"));
-let p2 = new Promise((resolve, reject) => reject("Server down! ❌"));
-let p3 = new Promise(resolve => resolve("Notifs ✅"));
+// let p1 = new Promise(resolve => resolve("User ✅"));
+// let p2 = new Promise((resolve, reject) => reject("Server down! ❌"));
+// let p3 = new Promise(resolve => resolve("Notifs ✅"));
 
-Promise.all([p1, p2, p3])
-  .then(results => console.log(results))
-  .catch(error => console.log(error));
-  // "Server down! ❌"
-  // Ek fail → sab fail! 😱
+// Promise.all([p1, p2, p3])
+//   .then(results => console.log(results))
+//   .catch(error => console.log(error));
+//   // "Server down! ❌"
+//   // Ek fail → sab fail! 😱
 
-//   Promise.allSettledSab ka result aayega
-Promise.allSettled([p1, p2, p3])
-  .then(results => console.log(results));
-  // Sab ka result aayega — fail ho ya pass!
+// //   Promise.allSettledSab ka result aayega
+// Promise.allSettled([p1, p2, p3])
+//   .then(results => console.log(results));
+//   // Sab ka result aayega — fail ho ya pass!
+
+
+
+//   Async/Await kya hai?
+// Async/Await Promise ko synchronous style mein likhne ka tarika hai — code upar se neeche seedha parhta hai!
+
+// async function fetchUser() {
+//     return "data"  
+// };
+// fetchUser().then(result=>console.log(result))
+
+
+// users
+let users = [
+  {name:"Muzaffar",age:20,id:1},
+  {name:"Al",age:18,id:2},
+  {name:"Khan",age:19,id:3},
+  {name:"Nafay",age:7,id:4},
+];
+
+function getUsers(id){
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+    for(let i=0; i < users.length; i++){
+    if(id === users[i].id){
+      return resolve(users[i])
+    }
+  }
+   return "User Not Found..."
+  }, 2000);
+  })
+}
+
+async function fetchUser(id) {
+    try {
+      let user = await getUsers(id)
+      console.log(user);
+    } catch (error) {
+       console.log(error.message);
+    }
+}
+
+fetchUser(1); // { name: "Muzaffar", age: 20, id: 1 } ✅
+fetchUser(2); // { name: "Al", age: 18, id: 2 } ✅
+fetchUser(4); // { name: "Nafay", age: 7, id: 4 } ✅
+fetchUser(9); // "User Not Found..." ✅
