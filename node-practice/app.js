@@ -20,8 +20,29 @@
 // });
 
 const fs = require("fs");
+const { escape } = require("querystring");
 
-fs.readFile("hello.txt", "utf8", (err, data) => {
+// fs.writeFile("tem.txt","Hello data",(err)=>{
+//   if(err){
+//     console.log(err.message);
+//   }
+//   else{
+//     console.log("Succues..");
+//   } 
+// })
+
+
+// fs.writeFile("khan.py","print(20)",(err)=>{
+//   if(err){
+//     console.log(err.message);
+//   }else{
+//     console.log("200");
+//   }
+// })
+
+// const fs = require("fs");
+
+fs.readFile("khan.py", "utf8", (err, data) => {
   if(err) {
     console.log("Error:", err);
   } else {
